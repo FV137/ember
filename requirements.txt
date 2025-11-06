@@ -1,0 +1,26 @@
+# PROJECT EMBER - Root Requirements
+# Install phase-specific requirements in each subdirectory
+
+# Core dependencies
+torch>=2.0.0
+torchaudio>=2.0.0
+numpy>=1.24.0
+pandas>=2.0.0
+
+# Audio processing
+librosa>=0.10.0
+scipy>=1.10.0
+
+# Dataset management
+datasets>=2.14.0
+scikit-learn>=1.3.0
+
+# Utilities
+tqdm>=4.65.0
+matplotlib>=3.7.0
+
+# Note: Each phase has its own requirements.txt with specific versions
+# Install from phase directories as needed:
+#   pip install -r ember_phase0/requirements.txt
+#   pip install -r ember_phase1/requirements.txt
+#   pip install -r ember_phase2/requirements.txt

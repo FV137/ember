@@ -1,0 +1,64 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Model Checkpoints (large files)
+*.pth
+*.pt
+*.ckpt
+*.h5
+*.pkl
+*.pickle
+*.safetensors
+
+# Data directories
+data/
+datasets/
+external-datasets/
+*.parquet
+*.csv
+*.json
+*.jsonl
+*.arrow
+
+# Logs and caches
+*.log
+logs/
+wandb/
+.neptune/
+mlruns/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter Notebooks checkpoints
+.ipynb_checkpoints/
+
+# Experiments output
+experiments/*/runs/
+experiments/*/outputs/
+experiments/*/checkpoints/
+
+# Temporary files
+tmp/
+temp/
+*.tmp

@@ -1,0 +1,15 @@
+torch>=2.0.0
+snnTorch
+torchaudio
+transformers
+datasets
+nnAudio
+scikit-learn
+numpy
+pandas
+matplotlib
+seaborn
+tqdm
+wandb
+librosa
+soundfile
