@@ -17,13 +17,14 @@ env.bak/
 venv.bak/
 
 # Model Checkpoints (large files)
-*.pth
-*.pt
-*.ckpt
-*.h5
-*.pkl
-*.pickle
-*.safetensors
+# not ignoring at this time
+# *.pth
+# *.pt
+# *.ckpt
+# *.h5
+# *.pkl
+# *.pickle
+# *.safetensors
 
 # Data directories
 data/
