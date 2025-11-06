@@ -110,8 +110,9 @@ Stimulus → [subsymbolic processing] → Modulation signal
 
 **Architecture:**
 - **L-mini:** 20M parameter SNN-based sensory processor
+- **TRM-mini:** 5-7M parameter recursive reasoning core
 - **H-mini:** 100M parameter transformer (basic reasoning/language)
-- **Total:** 120M parameters (~500MB)
+- **Total:** ~125-127M parameters (~500MB)
 
 **Modality Choice (To Be Determined):**
 - **Working hypothesis:** Audio (distress vocalization detection)
@@ -275,11 +276,17 @@ Final Response
 **Hardware:** 40GB VRAM (5060 Ti 16GB + 3090 24GB arriving tomorrow)
 **Cloud:** RunPod/Lambda approved for compute-intensive operations
 
-**Allocation:**
+**Allocation (Starting Point):**
 - **L-module:** 100M params (~400MB in FP16)
-- **H-module:** 400M params (~1.6GB in FP16)  
-- **Total Model:** 500M params (~2GB weights)
+- **TRM reasoning core:** 5-7M params (~28MB in FP16)
+- **H-module:** 400M params (~1.6GB in FP16)
+- **Total Model:** ~505-507M params (~2GB weights)
 - **Remaining:** ~38GB for activations, batching, training
+
+**Growth Path:**
+- 500M is a starting point, not a hard ceiling
+- As we add modalities (vision, proprioception) and handle more subtle data, parameters will naturally scale
+- Hardware supports models up to ~10B parameters in inference, ~3-4B in training
 
 **Local vs Cloud Strategy:**
 - **Local (fast iteration):** Architecture experiments, ablations, fine-tuning
@@ -362,10 +369,11 @@ Final Response
 ### Core Libraries (Standing on Giants' Shoulders)
 
 **Reasoning Architecture (Primary):**
-- **Lucidrain implementations** - HRM-pytorch or TRM (decision pending)
-  - Clean, research-focused code
-  - Easy to hack for custom sensory encoding
-  - Battle-tested by cutting-edge researchers
+- **TRM (Tiny Recursive Model)** - Using lucidrain's implementation
+  - 5-7M parameters vs HRM's 27M (better performance, simpler architecture)
+  - Single network with recursive refinement (no complex hierarchy)
+  - Clean, research-focused code easy to hack for custom sensory encoding
+  - Occam's Razor principle: simpler expression of recursive reasoning
 
 **Neural Network Components:**
 - **PyTorch 2.x** - Main framework
@@ -380,7 +388,7 @@ Final Response
 **What We Actually Build (~40% of total work):**
 - SNN→JEPA integration (novel combination)
 - Special input layer for H-module (minor modification)
-- Outer-loop refinement mechanism (HRM/TRM principles)
+- TRM integration with subsymbolic sensory embeddings
 - Phase 0 validation task and dataset
 
 ### Datasets (Starting Point)
@@ -448,6 +456,13 @@ Final Response
 
 ## Document History
 
+**v1.2** - 2025-11-06
+- Committed to TRM (Tiny Recursive Model) over HRM
+- Updated parameter budgets to reflect TRM efficiency (5-7M vs 27M)
+- Added flexible growth path for parameter scaling with additional modalities
+- Clarified that 500M is a starting point, not a hard ceiling
+- Updated Phase 0 architecture to include TRM-mini component
+
 **v1.1** - 2025-10-29
 - Updated hardware specs to actual 40GB (not aspirational 48GB)
 - Added Lucidrain implementations as primary development path
@@ -471,7 +486,8 @@ Final Response
 2. **Find/create dataset:** Genuine vs. acted distress vocalizations  
 3. **Set up development environment:** Libraries, data pipeline, logging
 4. **Build L-mini:** 20M param SNN audio processor
-5. **Build H-mini:** 100M param transformer with special input layer
+5. **Build TRM-mini:** 5-7M param recursive reasoning core
+6. **Build H-mini:** 100M param transformer with special input layer
 6. **Train and evaluate:** Get our GO/NO-GO answer
 
 **Let's start with Phase 0 architectural details next session.**
